@@ -13,5 +13,9 @@
 
  準備が整ったら、generate.pyを実行します。outフォルダに生成されたフォントが入ります。
 
+## 注意点
+花文字（GenkaiMincho100）の文字セットの最新版は下記にあります。
+https://drive.google.com/drive/folders/1GUxQuOP6-Pm1ZSn-0o7F4yaOFmnqDvWQ?usp=sharing
+
 ## ライセンス
 　generate.pyはMITライセンス。bmfont64.exeはbmfontのソースライセンスに準拠。

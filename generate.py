@@ -5,7 +5,7 @@ import subprocess
 def generateBMFont(name,ext,addSourceFile=False):
     #コマンド
     cmdList  =[
-        'bmfont.exe',
+        'bmfont64.exe',
         '-c',"./bmfc/" + name + ext,
         '-o',"./out/" + name + ".fnt"
     ];

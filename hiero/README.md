@@ -7,7 +7,8 @@
  - この[リンク](https://drive.google.com/open?id=1Qb5pyH4Cx3ouBIMbEw3KhnlTspx5Qfs_)からフォントをダウンロードしてインストールしておく
 
 ## フォントfntとテクスチャpng画像の生成
-runnable-hiero.jarをダブルクリックして、起動したHieroからaoyagireisyo60.hieroを読み込む。
+runnable-hiero.jarをダブルクリックして、起動したHieroからaoyagireisyo60.hieroを読み込む。このツールは非常に重たく、起動とファイルロードに時間がかかるので注意してください。 
+
 ![img](2018-03-21_16h44_47.png)
 
 aoyagireisyo60.hieroには予め、必要と思われる文字のみが含まれています。それ以上の文字が必要な場合、chrs.pyを実行すると、教育漢字等の文字種が生成されます。それでテキストを上書きしてください。

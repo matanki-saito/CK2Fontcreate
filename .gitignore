@@ -1,2 +1,7 @@
 source.txt
 out/
+.idea
+*.iml
+*.tga
+*.dds
+*.fnt

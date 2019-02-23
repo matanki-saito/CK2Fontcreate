@@ -2,7 +2,7 @@
 fileVersion=1
 
 # font settings
-fontName=Source Han Serif JP SemiBold
+fontName=aoyagireisyosimo2
 fontFile=
 charSet=0
 fontSize=60
@@ -30,8 +30,8 @@ useFixedHeight=0
 forceZero=0
 
 # output file
-outWidth=1500
-outHeight=1500
+outWidth=2048
+outHeight=2048
 outBitDepth=32
 fontDescFormat=0
 fourChnlPacked=0

@@ -60,7 +60,7 @@ org = set(list(" $(),-./0123456789:;=@ABCDEFGHIJKLMNOPQRSTUVWXYZ_abcdefghijklmno
 source = halfNumber | fullNumber | halfAlphabet | fullAlphabet | harfAlphabet2 | hiragana | katakana | kigou | kyouiku | zyouyoukanji | JIS1 | org;
 sourceTxt = ''.join(source);
 #source textを作成
-f = open('source.txt','w',encoding='utf_8_sig');
+f = open('chars.txt','w',encoding='utf_8_sig');
 f.write(sourceTxt);
 f.close();
 

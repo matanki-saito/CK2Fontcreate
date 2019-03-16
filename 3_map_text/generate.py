@@ -23,14 +23,14 @@ def negeposi(name, ext):
     im_g = im_enh.filter(ImageFilter.GaussianBlur(radius=0.4))
 
     # 上書き
-    im_g.save('./out/' + name + ext, quality=100)
+    im_g.save('./out/' + name + ".tga", quality=100)
 
 
 def convertPngToDds(name, ext):
     # コマンド
     cmdList = [
         '../1_tool/NvcompressFrontEnd/nvcompress/nvcompress.exe',
-        '-rgb',
+        '-nocuda',
         './out/' + name + ext,
         './out/' + name + '.dds'
     ];
@@ -101,7 +101,7 @@ def main():
             negeposi(file_name, file_ext);
 
             # 変換
-            convertPngToDds(file_name, file_ext);
+            # convertPngToDds(file_name, file_ext);
 
 
 if __name__ == "__main__":

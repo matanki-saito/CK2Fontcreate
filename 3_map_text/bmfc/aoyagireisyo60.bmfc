@@ -30,8 +30,8 @@ useFixedHeight=0
 forceZero=0
 
 # output file
-outWidth=3000
-outHeight=3000
+outWidth=4096
+outHeight=4096
 outBitDepth=32
 fontDescFormat=0
 fourChnlPacked=0

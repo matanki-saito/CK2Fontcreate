@@ -11,6 +11,7 @@ scaleH=100
 useSmoothing=1
 isBold=0
 isItalic=0
+isCk2MapFont=1
 useUnicode=1
 disableBoxChars=1
 outputInvalidCharGlyph=0

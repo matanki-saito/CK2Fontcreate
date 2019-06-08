@@ -5,7 +5,7 @@ fileVersion=1
 fontName=Source Han Sans JP
 fontFile=
 charSet=0
-fontSize=17
+fontSize=18
 aa=2
 scaleH=100
 useSmoothing=1
@@ -18,6 +18,9 @@ dontIncludeKerningPairs=1
 useHinting=1
 renderFromOutline=0
 useClearType=1
+isHalfYakumono=1
+xScaleH=82
+xScaleV=94
 
 # character alignment
 paddingDown=0

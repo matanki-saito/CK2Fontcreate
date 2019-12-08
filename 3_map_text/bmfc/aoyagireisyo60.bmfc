@@ -2,14 +2,14 @@
 fileVersion=1
 
 # font settings
-fontName=Source Han Serif JP SemiBold
+fontName=Source Han Serif JP Heavy
 fontFile=
 charSet=0
 fontSize=60
 aa=2
 scaleH=100
 useSmoothing=1
-isBold=0
+isBold=1
 isItalic=0
 isCk2MapFont=1
 useUnicode=1
@@ -48,7 +48,7 @@ invG=0
 invB=0
 
 # outline
-outlineThickness=2
+outlineThickness=0
 
 # selected chars
 

@@ -8,97 +8,86 @@ def invert(image):
     return image.point(lambda p: 255 - p)
 
 
-def negeposi(name, ext):
+def nega_posi(name, ext):
     # 画像反転。組み込みのinvertではRGBAを処理できないために一度splitしている。
-    im = Image.open('./out/' + name + ext).convert('RGBA');
-    r, g, b, a = im.split();
+    im = Image.open('./out/' + name + ext).convert('RGBA')
+    r, g, b, a = im.split()
     r, g, b = map(invert, (r, g, b))
-    im_invert = Image.merge(im.mode, (r, g, b, a))
 
-    # 白がきついので明るさを落とす
-    enhancer = ImageEnhance.Brightness(im_invert)
-    im_enh = enhancer.enhance(0.7)
+    # 透明度を上げる（アルファを下げる）
+    enhancer = ImageEnhance.Brightness(a)
+    a_enh = enhancer.enhance(0.75)
+
+    # RGBとAを結合
+    im_enh = Image.merge(im.mode, (r, g, b, a_enh))
 
     # ぼかし
-    im_g = im_enh.filter(ImageFilter.GaussianBlur(radius=0.4))
+    im_g = im_enh.filter(ImageFilter.GaussianBlur(radius=0.1))
 
     # 上書き
     im_g.save('./out/' + name + ".tga", quality=100)
 
 
-def convertPngToDds(name, ext):
+def generate_bm_font(name, ext, add_source_file):
     # コマンド
-    cmdList = [
-        '../1_tool/NvcompressFrontEnd/nvcompress/nvcompress.exe',
-        '-nocuda',
-        './out/' + name + ext,
-        './out/' + name + '.dds'
-    ];
-
-    # nvcompress実行
-    subprocess.call(" ".join(cmdList));
-
-
-def generateBMFont(name, ext, addSourceFile=False):
-    # コマンド
-    cmdList = [
+    cmd_list = [
         '../1_tool/bmfont64.exe',
         '-c', "./bmfc/" + name + ext,
         '-o', "./out/" + name + ".fnt"
-    ];
+    ]
 
     # 追加ファイルあり
-    if (addSourceFile):
-        cmdList.append('-t');
-        cmdList.append(addSourceFile);
+    if add_source_file is not None:
+        cmd_list.append('-t')
+        cmd_list.append(add_source_file)
 
     # BFFont実行
-    subprocess.call(" ".join(cmdList));
+    subprocess.call(" ".join(cmd_list))
 
 
-def readTextFile(name):
+def read_seed_text_from_file(name):
     f = open('./source/' + name + '.txt', "r", encoding='utf_8_sig')
-    text = f.read();
-    f.close();
-    return text;
+    text = f.read()
+    f.close()
+    return text
 
 
 def main():
-    sourceText = "";
+    source_text = ""
 
     # sourceフォルダ内を走査
-    files = os.listdir("./source");
+    files = os.listdir("./source")
     for file in files:
         # 拡張子とファイル名を分離
-        file_name, file_ext = os.path.splitext(file);
+        file_name, file_ext = os.path.splitext(file)
 
         # 拡張子がtxt
-        if (file_ext == ".txt"):
-            sourceText = sourceText + readTextFile(file_name);
+        if file_ext == ".txt":
+            source_text = source_text + read_seed_text_from_file(file_name)
 
     # source textを作成
-    f = open('source.txt', 'w', encoding='utf_8_sig');
-    f.write(sourceText);
-    f.close();
+    f = open('source.txt', 'w', encoding='utf_8_sig')
+    f.write(source_text)
+    f.close()
 
     # bmfcフォルダ内を走査
-    files = os.listdir("./bmfc");
+    files = os.listdir("./bmfc")
     for file in files:
         # 拡張子とファイル名を分離
-        file_name, file_ext = os.path.splitext(file);
+        file_name, file_ext = os.path.splitext(file)
 
         # フォント生成
-        generateBMFont(file_name, file_ext, "source.txt");
+        generate_bm_font(file_name, file_ext, add_source_file="source.txt")
 
     # outフォルダ内を走査
-    files = os.listdir("./out");
+    files = os.listdir("./out")
     for file in files:
         # 拡張子とファイル名を分離
-        file_name, file_ext = os.path.splitext(file);
+        file_name, file_ext = os.path.splitext(file)
 
-        if (file_ext == ".png"):
+        if file_ext == ".png":
             # ネガポジ反転
-            negeposi(file_name, file_ext);
+            nega_posi(file_name, file_ext)
 
             # 変換
             # convertPngToDds(file_name, file_ext);
